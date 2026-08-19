@@ -1,0 +1,123 @@
+@import "modern-normalize/modern-normalize.css";
+
+:root {
+  --primary-color: #59B17A;
+  --dark-green: #3f945f;
+  --primary-light: rgba(89, 177, 122, 0.1);
+  --bg-color: #F7F8FA;
+  --white: #FFFFFF;
+  --text-dark: #1D1E21;
+  --light-red: rgba(232, 80, 80, 0.1);
+  -red:#e85050;
+
+  --main-transition: 333ms ease-in-out;
+
+ --font-family: "Inter", sans-serif;
+}
+
+body {
+  font-family: var(--font-family);
+font-weight: 400;
+font-size: 14px;
+line-height: 1.29;
+color: var(--text-dark);
+  overflow-x: hidden;
+  background-color: var(--bg-color);
+}
+
+@media only screen and (min-width: 768px) {
+body {
+font-size: 16px;
+line-height: 1.25;
+}
+}
+
+
+main {
+  position: relative;
+  overflow: hidden;
+}
+
+h1,
+h2,
+h3{
+    font-weight: 600;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+}
+
+ul, ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+a {
+  color: currentColor;
+  text-decoration: none;
+  outline: none;
+}
+
+button {
+ cursor: pointer;
+ border: none;
+ outline: none;
+ border-radius: 60px;
+background-color: var(--primary-color);
+color: var(--white);
+transition: background-color var(--main-transition);
+}
+
+button:hover,  button:hover, button:active {
+background-color: var(--green-dark);
+}
+
+input {
+  border: 1px solid rgba(29, 30, 33, 0.2);
+border-radius: 60px;
+outline: none;
+transition: border-color var(--main-transition);
+}
+
+input:hover, input:hover, input:active {
+  border-color: var(--primary-color);
+}
+
+input::placeholder {
+  color: rgba(29, 30, 33, 0.6);
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.container {
+  min-width: 320px;
+  max-width: 375px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+@media only screen and (min-width: 768px) {
+  .container {
+    max-width: 768px;
+    padding: 0 32px;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .container {
+    max-width: 1440px;
+     padding: 0 128px;
+  }
+}
