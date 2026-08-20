@@ -2,6 +2,10 @@ import css from "./Footer.module.css"
 
 export default function Footer() {
   return (
-    <div></div>
+    <footer className={css.footer}>
+      <div className="container">
+        
+      </div>
+    </footer>
   )
 }

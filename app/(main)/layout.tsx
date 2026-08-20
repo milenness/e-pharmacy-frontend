@@ -1,4 +1,4 @@
-// import Header from "@/components/Header/Header";
+import Header from "@/components/Header";
 // import Footer from "@/components/Footer/Footer";
 
 export default function SharedLayout({
@@ -8,7 +8,7 @@ export default function SharedLayout({
 }) {
   return (
     <>
-          {/* <Header /> */}
+          <Header />
       <main>{children}</main>
       {/* <Footer /> */}
     </>
