@@ -38,6 +38,7 @@ export default function Header() {
               <Link
                 href="/"
                 className={`${css.navLink} ${pathname === "/" ? css.active : ""}`}
+                style={{ paddingLeft: "20px", paddingRight: "20px" }}
                 aria-label="Go to home page"
               >
                 Home
@@ -49,6 +50,7 @@ export default function Header() {
                 className={`${css.navLink} ${
                   pathname === "/medicine-store" ? css.active : ""
                 }`}
+                style={{ paddingLeft: "9px", paddingRight: "9px" }}
                 aria-label="Go to medicine stores page"
               >
                 Medicine store
@@ -60,6 +62,7 @@ export default function Header() {
                 className={`${css.navLink} ${
                   pathname === "/medicine" ? css.active : ""
                 }`}
+                style={{ paddingLeft: "17px", paddingRight: "17px" }}
                 aria-label="Go to medicine catalog page"
               >
                 Medicine
@@ -71,9 +74,7 @@ export default function Header() {
             <li className={css.authItem}>
               <Link
                 href="/register"
-                className={`${css.registerLink} ${
-                  pathname === "/register" ? css.active : ""
-                }`}
+                className={`${css.registerLink} ${isHomePage ? css.homeRegisterLink : ""}`}
                 aria-label="Go to register page"
               >
                 Register
@@ -83,9 +84,7 @@ export default function Header() {
             <li className={css.authItem}>
               <Link
                 href="/login"
-                className={`${css.loginLink} ${
-                  pathname === "/login" ? css.active : ""
-                }`}
+                className={`${css.loginLink} ${isHomePage ? css.homeLoginLink : ""}`}
                 aria-label="Go to login page"
               >
                 Login

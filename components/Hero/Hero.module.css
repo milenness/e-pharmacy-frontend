@@ -1,0 +1,18 @@
+.section {
+    padding-top: 161px;
+    padding-bottom: 258px;
+    background-color: var(--primary-color);
+}
+
+@media only screen and (min-width: 768px) {
+.section {
+    padding-top: 158px;
+}
+}
+
+@media only screen and (min-width: 1440px) {
+.section {
+    padding-top: 44px;
+    padding-bottom: 146px;
+}
+}
