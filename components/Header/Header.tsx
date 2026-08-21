@@ -5,6 +5,8 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { IoIosMenu } from "react-icons/io";
+import { PiShoppingCartSimpleBold } from "react-icons/pi";
+
 import css from "./Header.module.css";
 import MobileMenu from "@/components/MobileMenu";
 
@@ -92,9 +94,37 @@ export default function Header() {
             </li>
           </ul>
 
+          {/* <ul className={css.userList}>
+            <li className={css.cartItem}>
+              <Link
+                href="/cart"
+                className={css.cartLink}
+                aria-label="Go to cart page"
+              >
+                <PiShoppingCartSimpleBold size={16} />
+              </Link>
+            </li>
+
+            <li
+              className={`${css.nameItem} ${isHomePage ? css.homeNameItem : ""}`}
+            >
+              I
+            </li>
+
+            <li className={css.logOutItem}>
+              <Link
+                href="/"
+                className={`${css.registerLink} ${isHomePage ? css.homeRegisterLink : ""}`}
+                aria-label="Log out"
+              >
+                Log out
+              </Link>
+            </li>
+          </ul> */}
+
           <button
             type="button"
-            className={css.burgerButton}
+            className={`${css.burgerButton} ${isHomePage ? css.homeBurgerButton : ""}`}
             aria-label="Open mobile menu"
             onClick={() => setIsMenuOpen(true)}
           >

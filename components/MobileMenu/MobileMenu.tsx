@@ -73,7 +73,7 @@ export default function MobileMenu({ onClose }: ModalProps) {
           </li>
         </ul>
 
-        <ul className={css.authList}>
+        {/* <ul className={css.authList}>
           <li className={css.authItem}>
             <Link href="/register" className={css.registerLink}>
               Register
@@ -84,7 +84,11 @@ export default function MobileMenu({ onClose }: ModalProps) {
               Login
             </Link>
           </li>
-        </ul>
+        </ul> */}
+
+        <Link href="/register" className={css.logOutLink}>
+          Log out
+        </Link>
       </div>
     </div>,
     document.body,

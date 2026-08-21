@@ -12,7 +12,7 @@
 }
 
 
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 1440px) {
   .backdrop {
    display: none;
   }
@@ -126,9 +126,31 @@ font-size: 14px;
 line-height: 1;
 }
 
+@media only screen and (min-width: 768px) {
+.registerLink {
+  padding-top: 16px;
+    padding-bottom: 16px;
+}
+}
+
 .loginLink {
     font-size: 14px;
 line-height: 1;
 text-decoration: underline;
 color: var(--second-white);
+}
+
+.logOutLink {
+ border: 1px solid rgba(241, 241, 241, 0.5);
+border-radius: 60px;
+padding: 13px 28px;
+color: var(--second-white);
+font-size: 14px;
+line-height: 1;
+}
+
+@media only screen and (min-width: 768px) {
+.logOutLink {
+  padding: 15px 32px;
+}
 }
