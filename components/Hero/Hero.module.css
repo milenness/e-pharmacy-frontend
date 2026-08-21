@@ -16,3 +16,68 @@
     padding-bottom: 146px;
 }
 }
+
+.content {
+    padding-top: 19px;
+    padding-bottom: 91px;
+   background-image: url('/Hero/HeroTel.png');
+  background-repeat: no-repeat;
+ background-size: contain;
+  background-position: center;
+}
+
+@media only screen and (min-width: 768px) {
+.content {
+    padding: 140px 64px 156px 31px;
+    background-image: url('/Hero/HeroTabl.png');
+}
+}
+
+@media only screen and (min-width: 1440px) {
+.content {
+    max-width: 749px;
+    margin: 0 auto;
+   padding-right: 86px;
+   padding-left: 54px;
+   background-image: url('/Hero/HeroDesk.png');
+}
+}
+
+.title {
+    font-size: 50px;
+line-height: 1;
+color: var(--white);
+text-shadow: 0 4px 85px 0 rgba(29, 30, 33, 0.3);
+margin: 0 auto 20px;
+}
+
+
+@media only screen and (min-width: 768px) {
+.title {
+   font-size: 74px;
+margin-bottom: 24px;
+}
+}
+
+@media only screen and (min-width: 1440px) {
+.title {
+   max-width: 609px;
+}
+}
+
+.text {
+    font-size: 12px;
+line-height: 1.33;
+margin-left: auto;
+max-width: 156px;
+color: var(--white);
+}
+
+@media only screen and (min-width: 768px) {
+.text {
+    font-size: 16px;
+line-height: 1.25;
+max-width: 219px;
+padding-right: 19px;
+}
+}
