@@ -87,8 +87,8 @@ gap: 14px;
   width: 5px;
   height: 15px; 
   background-color: var(--white);
-  border-top: 1.15px solid #f1f1f1;
-  border-bottom: 1.15px solid #f1f1f1;
+  border-top: 1.15px solid var(--second-white);
+  border-bottom: 1.15px solid var(--second-white);
   z-index: 5;
 }
 
@@ -150,7 +150,7 @@ transition: background-color var(--main-transition), border-color var(--main-tra
 
 .loginLink {
     font-size: 14px;
-line-height: 100%;
+line-height: 1;
 text-decoration: underline;
 }
 

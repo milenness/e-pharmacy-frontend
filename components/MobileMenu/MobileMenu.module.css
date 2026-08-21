@@ -5,45 +5,130 @@
   z-index: 9999;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: rgba(29, 30, 33, 0.45);
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
+}
+
+
+@media only screen and (min-width: 768px) {
+  .backdrop {
+   display: none;
+  }
 }
 
 .modal {
-  position: relative;
-  max-width: 90vw;
-  max-height: 90vh;
-  border-radius: 8px;
-  background-color: #fff;
-  padding: 24px;
+  width: 210px;
+  height: 100vh;
+  background-color: var(--primary-color);
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+ justify-content: space-between;
+ padding: 31px 38px 40px 38px;
+}
+
+@media only screen and (min-width: 768px) {
+  .modal {
+    width: 334px;
+    padding: 39px 84px 64px 84px;
+  }
 }
 
 .closeButton {
+  position: relative;
+  left: 18px;
+  color: var(--white);
+  padding: 7px;
+  margin-left: auto;
+}
+
+@media only screen and (min-width: 768px) {
+.closeButton {
+  left: 50px;
+}
+}
+
+.navList {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    z-index: 10;
+    align-items: center;
+}
+
+.navItem {
+  position: relative;
+  border-radius: 60px;
+  background-color: var(--white);
+  padding: 7px;
+   border: 1.15px solid #f1f1f1;
+}
+
+.navItem:not(:last-child)::after {
+  content: "";
   position: absolute;
-  top: 8px;
-  right: 8px;
-  background: #fff;
-  border: none;
-  border-radius: 4px;
-  width: 32px;
-  height: 32px;
-  font-size: 20px;
-  line-height: 0;
-  color: #333;
-  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.25);
-  cursor: pointer;
+  bottom: -4px;
+ left: 50%;
+  transform: translateX(-50%);
+  width: 13px;
+  height: 4px; 
+  background-color: var(--white);
+  border-left: 1.15px solid var(--second-white);
+  border-right: 1.15px solid var(--second-white);
+  z-index: 5;
+}
+
+.navLink {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0;
+  padding-top: 8px;
+   padding-bottom: 9px;
+ border-radius: 24px;
+ font-size: 14px;
+line-height: 1;
+  color: var(--text-gray);
+  transition: background-color var(--main-transition), color var(--main-transition);
 }
 
-.closeButton:hover {
-  background: #f2f2f2;
+.navItem:hover .navLink,
+.navItem .navLink.active  {
+  background-color: var(--primary-color);
+  color: var(--white);
 }
 
-.closeButton:focus {
-  outline: 2px solid #007bff;
+.authList {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+}
+
+@media only screen and (min-width: 768px) {
+.authList {
+  flex-direction: row;
+}
+}
+
+.authItem {
+  display: flex;
+  justify-content: center;
+}
+
+.registerLink {
+ border: 1px solid rgba(241, 241, 241, 0.5);
+border-radius: 60px;
+padding: 13px 32px;
+color: var(--second-white);
+font-size: 14px;
+line-height: 1;
+}
+
+.loginLink {
+    font-size: 14px;
+line-height: 1;
+text-decoration: underline;
+color: var(--second-white);
 }
