@@ -1,14 +1,14 @@
 .header {
     padding: 25px 0;
-    position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  background-color: var(--primary-color);
+}
+
+.homeHeader {
+ background-color: var(--primary-color);
 }
 
 .nav {
     display: flex;
+    justify-content: space-between;
 }
 
 .logoLink{
@@ -17,6 +17,94 @@
     font-weight: 600;
 font-size: 16px;
 letter-spacing: -0.03em;
-color: var(--white);
 align-items: center;
+}
+
+.homeLogoLink {
+    color: var(--white);
+}
+
+@media only screen and (min-width: 768px) {
+.logoLink{
+font-size: 20px;
+gap: 14px;
+}
+
+.logoImg {
+    width: 44px;
+    height: 44px;
+}
+}
+
+.navList {
+    display: none;
+}
+
+.authList {
+    display: none;
+}
+
+@media only screen and (min-width: 1440px) {
+.navList {
+    display: flex;
+    gap: 1px;
+    z-index: 10;
+}
+
+.navItem {
+  position: relative;
+  cursor: pointer;
+  border-radius: 60px;
+  background-color: var(--white);
+  padding: 7px;
+   border: 1.15px solid #f1f1f1;
+}
+
+.navItem:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  right: -4px;
+  top: 15px;
+  width: 5px;
+  height: 15px; 
+  background-color: var(--white);
+  border-top: 1.15px solid #f1f1f1;
+  border-bottom: 1.15px solid #f1f1f1;
+  z-index: 5;
+}
+
+.navLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 20px;
+ border-radius: 24px;
+ font-size: 14px;
+line-height: 1;
+  color: var(--text-gray);
+  transition: background-color var(--main-transition), color var(--main-transition);
+}
+
+.navItem:hover .navLink,
+.navItem .navLink.active  {
+  background-color: var(--primary-color);
+  color: var(--white);
+}
+
+.authList {
+    display: flex;
+    gap: 14px;
+}
+}
+
+
+.burgerButton {
+    display: flex;
+    padding: 0;
+}
+
+@media only screen and (min-width: 1440px) {
+.burgerButton {
+    display: none;
+}
 }

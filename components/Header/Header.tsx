@@ -3,21 +3,29 @@
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import { IoIosMenu } from "react-icons/io";
 import css from "./Header.module.css";
 import MobileMenu from "@/components/MobileMenu";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const pathname = usePathname();
+
+  const isHomePage = pathname === "/";
 
   return (
-    <header className={css.header}>
+    <header className={`${css.header} ${isHomePage ? css.homeHeader : ""}`}>
       <div className="container">
         <nav className={css.nav}>
-          <Link href="/" className={css.logoLink} aria-label="Go to home page">
+          <Link
+            href="/"
+            className={`${css.logoLink} ${isHomePage ? css.homeLogoLink : ""}`}
+            aria-label="Go to home page"
+          >
             <Image
               className={css.logoImg}
-              src="/WhiteLogo.svg"
+              src={isHomePage ? "/WhiteLogo.svg" : "/Logo.svg"}
               alt="E-Pharmacy Logo"
               width={32}
               height={32}
@@ -29,7 +37,7 @@ export default function Header() {
             <li className={css.navItem}>
               <Link
                 href="/"
-                className={css.navLink}
+                className={`${css.navLink} ${pathname === "/" ? css.active : ""}`}
                 aria-label="Go to home page"
               >
                 Home
@@ -38,7 +46,9 @@ export default function Header() {
             <li className={css.navItem}>
               <Link
                 href="/medicine-store"
-                className={css.navLink}
+                className={`${css.navLink} ${
+                  pathname === "/medicine-store" ? css.active : ""
+                }`}
                 aria-label="Go to medicine stores page"
               >
                 Medicine store
@@ -47,7 +57,9 @@ export default function Header() {
             <li className={css.navItem}>
               <Link
                 href="/medicine"
-                className={css.navLink}
+                className={`${css.navLink} ${
+                  pathname === "/medicine" ? css.active : ""
+                }`}
                 aria-label="Go to medicine catalog page"
               >
                 Medicine
@@ -59,7 +71,9 @@ export default function Header() {
             <li className={css.authItem}>
               <Link
                 href="/register"
-                className={css.registerLink}
+                className={`${css.registerLink} ${
+                  pathname === "/register" ? css.active : ""
+                }`}
                 aria-label="Go to register page"
               >
                 Register
@@ -69,7 +83,9 @@ export default function Header() {
             <li className={css.authItem}>
               <Link
                 href="/login"
-                className={css.loginLink}
+                className={`${css.loginLink} ${
+                  pathname === "/login" ? css.active : ""
+                }`}
                 aria-label="Go to login page"
               >
                 Login
