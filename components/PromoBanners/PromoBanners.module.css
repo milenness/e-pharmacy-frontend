@@ -1,0 +1,134 @@
+.section {
+    padding: 40px 0;
+}
+
+@media only screen and (min-width: 768px) {
+.section {
+    padding-top: 64px;
+    padding-bottom: 60px;
+}
+}
+
+.list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+@media only screen and (min-width: 768px) {
+.list {
+   flex-direction: row;
+   gap: 28px;
+   flex-wrap: wrap;
+}
+}
+
+@media only screen and (min-width: 1440px) {
+.list {
+   flex-wrap: nowrap;
+   justify-content: center;
+}
+}
+
+.item {
+    padding: 14px 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    border: 1.15px solid var(--second-white);
+border-radius: 27px;
+box-shadow: 0 -1px 14px 0 rgba(29, 30, 33, 0.02);
+background-color: #fdfdfd;
+}
+
+@media only screen and (min-width: 768px) {
+.item {
+    padding: 14px 18px;
+    width: 321px;
+}
+}
+
+.top {
+    display: flex;
+    gap: 13.86px;
+    align-items: center;
+}
+
+.number {
+    border-radius: 100%;
+background-color: rgba(231, 241, 237, 0.4);
+width: 54px;
+height: 54px;
+font-size: 24px;
+line-height: 1;
+color: var(--primary-color);
+display: flex;
+align-items: center;
+justify-content: center;
+}
+
+@media only screen and (min-width: 768px) {
+.number {
+   width: 74px;
+height: 74px;
+font-size: 28px;
+}
+}
+
+.title {
+    font-weight: 500;
+font-size: 16px;
+line-height: 1.4;
+color: #252539;
+}
+
+@media only screen and (min-width: 768px) {
+.title {
+   font-size: 20px;
+}
+}
+
+.bottom {
+    width: 140px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.secondItem {
+  width: 148px;
+}
+
+@media only screen and (min-width: 768px) {
+.bottom {
+   width: max-content;
+  gap: 28px;
+}
+}
+
+.percentage {
+    font-weight: 500;
+font-size: 24px;
+line-height: 1.4;
+color: #252539;
+}
+
+@media only screen and (min-width: 768px) {
+.percentage {
+  font-size: 36px;
+}
+}
+
+.bottomLink {
+    color: var(--text-gray);
+    font-size: 13px;
+line-height: 1.4;
+padding-bottom: 1px;
+}
+
+
+@media only screen and (min-width: 768px) {
+.bottomLink {
+  padding-bottom: 7px;
+}
+}

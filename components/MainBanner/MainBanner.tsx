@@ -1,6 +1,6 @@
-import css from "./Hero.module.css"
+import css from "./MainBanner.module.css";
 
-export default function Hero() {
+export default function MainBanner() {
   return (
     <section className={css.section}>
       <div className="container">

@@ -1,11 +1,12 @@
-import Hero from "@/components/Hero"
+import MainBanner from "@/components/MainBanner";
+import PromoBanners from "@/components/PromoBanners";
 
 export default function HomePage() {
   return (
     <>
-      <Hero/>
-      {/* <PromoBanners />
-      <MedicineStores />
+      <MainBanner />
+      <PromoBanners />
+      {/* <MedicineStores />
       <AddPharmacyPromo />
       <FeaturesSection />
       <ReviewsSection /> */}

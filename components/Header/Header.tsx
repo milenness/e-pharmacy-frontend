@@ -5,7 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { IoIosMenu } from "react-icons/io";
-import { PiShoppingCartSimpleBold } from "react-icons/pi";
+// import { PiShoppingCartSimpleBold } from "react-icons/pi";
 
 import css from "./Header.module.css";
 import MobileMenu from "@/components/MobileMenu";
@@ -103,6 +103,7 @@ export default function Header() {
               >
                 <PiShoppingCartSimpleBold size={16} />
               </Link>
+              <p className={css.count}>0</p>
             </li>
 
             <li
