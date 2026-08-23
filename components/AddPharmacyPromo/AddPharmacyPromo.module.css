@@ -1,0 +1,133 @@
+.section {
+    padding: 40px 0 20px 0;
+}
+
+@media only screen and (min-width: 768px) {
+.section {
+    padding-top: 60px;
+    padding-bottom: 32px;
+}
+}
+
+.container {
+  min-width: 320px;
+  max-width: 375px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+@media only screen and (min-width: 768px) {
+  .container {
+    max-width: 768px;
+    padding: 0 32px;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .container {
+    max-width: 1440px;
+     padding: 0 96px;
+  }
+}
+
+.content {
+    background-color: var(--primary-color);
+    padding: 40px 20px 20px 20px;
+    border-radius: 32px;
+}
+
+@media only screen and (min-width: 768px) {
+.content {
+       padding: 104px 48px 40px 48px;
+}
+}
+
+@media only screen and (min-width: 1440px) {
+.content {
+     display: flex;
+     gap: 19px;
+     padding: 40px 40px 40px 80px;
+     align-items: center;
+}
+}
+
+.title {
+    font-size: 28px;
+line-height: 1.14;
+letter-spacing: -0.01em;
+color: var(--second-white);
+margin-bottom: 20px;
+}
+
+@media only screen and (min-width: 768px) {
+.title {
+  font-size: 48px;
+line-height: 1.15;
+margin-bottom: 24px;
+}
+}
+
+.text {
+color: var(--second-white);
+margin-bottom: 40px;
+}
+
+@media only screen and (min-width: 768px) {
+.text {
+ max-width: 488px;
+}
+}
+
+.wrapper {
+  margin-bottom: 39px;
+}
+
+@media only screen and (min-width: 768px) {
+.wrapper {
+ margin-bottom: 83px;
+}
+}
+
+@media only screen and (min-width: 1440px) {
+.wrapper {
+ margin-bottom: 0;
+}
+}
+
+.storeLink {
+    font-weight: 500;
+    padding: 13px 32px;
+    color: var(--second-white);
+    border: 1px solid rgba(241, 241, 241, 0.5);
+border-radius: 60px;
+display: inline-block;
+  transition: border-color var(--main-transition), background-color var(--main-transition);
+}
+
+@media only screen and (min-width: 768px) {
+.storeLink {
+ padding-right: 50px;
+ padding-left: 50px;
+ font-size: 14px;
+line-height: 1.29;
+}
+}
+
+.storeLink:hover, .storeLink:focus, .storeLink:active {
+    border-color: var(--dark-green);
+     background-color: var(--dark-green);
+}
+
+.promoImg {
+  content: url("/AddPharmacyPromo/Tel.png");
+  width: 295px;
+  height: 335px;
+}
+
+@media screen and (min-width: 768px) {
+  .promoImg {
+    content: url("/AddPharmacyPromo/TablDesk.png");
+  width: 608px;
+height: 406px;
+  }
+}

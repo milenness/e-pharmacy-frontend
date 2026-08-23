@@ -24,18 +24,16 @@ export default function PromoBanners() {
             </div>
           </li>
 
-          <li className={css.item} >
+          <li className={css.item}>
             <div className={css.top}>
               <p className={css.number}>2</p>
               <h2 className={css.title}>Secure delivery</h2>
             </div>
 
-            <div
-         className={`${css.bottom} ${css.secondItem}`}
-            >
+            <div className={`${css.bottom} ${css.secondItem}`}>
               <p className={css.percentage}>100%</p>
               <Link
-                href="/features"
+                href="#features"
                 className={css.bottomLink}
                 aria-label="Read more about features and secure delivery"
               >
