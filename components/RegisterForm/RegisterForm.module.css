@@ -1,0 +1,90 @@
+.form {
+    display: flex;
+    flex-direction: column;
+}
+
+.label {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media only screen and (min-width: 768px) {
+.inputsWrapper {
+    display: grid;
+ grid-template-columns: repeat(2, 280px);
+  gap: 14px;
+}
+} 
+
+.fieldGroup:not(:last-of-type) {
+  margin-bottom: 10px;
+}
+
+@media only screen and (min-width: 768px) {
+.fieldGroup:not(:last-of-type) {
+  margin-bottom: 0;
+}
+}
+
+.field {
+    padding: 13px 18px;
+    border: 1px solid rgba(29, 30, 33, 0.1);
+border-radius: 60px;
+background-color: var(--white);
+ width: 100%;
+}
+
+@media only screen and (min-width: 768px) {
+.field {
+ width: 280px;
+}
+}
+
+.field::placeholder {
+font-size: 12px;
+line-height: 1.5;
+color: rgba(29, 30, 33, 0.4);
+}
+
+.btn {
+    margin-top: 20px;
+    font-weight: 500;
+padding: 13px 0;
+width: 100%;
+transition: background-color var(--main-transition);
+}
+
+@media only screen and (min-width: 768px) {
+.btn {
+    margin-top: 62px;
+    width: 280px;
+}
+}
+
+.btn:hover, .btn:focus, .btn:active {
+    background-color: var(--dark-green);
+}
+
+.registerLink {
+    font-size: 12px;
+line-height: 1.5;
+color: rgba(29, 30, 33, 0.4);
+margin-top: 14px;
+display: flex;
+justify-content: center;
+}
+
+@media only screen and (min-width: 768px) {
+.registerLink {
+   justify-content: flex-start;
+  position: relative;
+  left: 67px;
+}
+}

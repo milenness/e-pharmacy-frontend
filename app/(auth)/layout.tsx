@@ -11,7 +11,7 @@ export default function AuthLayout({
       <AuthHeader />
       <main className={css.mainContainer}>
         <section className={css.section}>
-          <div className="container">
+          <div className={css.container}>
             <div className={css.content}>
               <h1 className={css.title}>
                 Your medication, delivered Say goodbye to all{" "}

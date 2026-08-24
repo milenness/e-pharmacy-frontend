@@ -1,3 +1,24 @@
+.container {
+  min-width: 320px;
+  max-width: 375px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+@media only screen and (min-width: 768px) {
+  .container {
+    max-width: 768px;
+    padding: 0 32px;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .container {
+    max-width: 1440px;
+     padding: 0 100px;
+  }
+}
+
 .mainContainer {
   min-height: calc(100vh - 82px);
   background-image: url('/RegisterLogin/Pattern.png');
@@ -24,13 +45,13 @@
 }
 
 @media only screen and (min-width: 768px) {
-.section{
+.section {
  padding: 140px 0 250px 0;
 }
 }
 
 @media only screen and (min-width: 198px) {
-.section{
+.section {
  padding: 198px 0 262px 0;
 }
 }
