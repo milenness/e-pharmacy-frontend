@@ -1,0 +1,94 @@
+.mainContainer {
+  min-height: calc(100vh - 82px);
+  background-image: url('/RegisterLogin/Pattern.png');
+  background-repeat: no-repeat;
+  background-position: right bottom;
+  background-size: auto 168px;
+}
+
+@media only screen and (min-width: 768px) {
+  .mainContainer {
+    min-height: calc(100vh - 100px);
+    background-size: auto 271px;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .mainContainer {
+    background-size: auto 257px;
+  }
+}
+
+.section {
+    padding: 81px 0 191px 0;
+}
+
+@media only screen and (min-width: 768px) {
+.section{
+ padding: 140px 0 250px 0;
+}
+}
+
+@media only screen and (min-width: 198px) {
+.section{
+ padding: 198px 0 262px 0;
+}
+}
+
+.content {
+    display: flex;
+   flex-direction: column;
+   gap: 20px;
+}
+
+@media only screen and (min-width: 768px) {
+.content {
+   gap: 54px;
+}
+}
+
+@media only screen and (min-width: 1440px) {
+.content {
+  flex-direction: row;
+}
+}
+
+.title {
+    position: relative;
+    font-size: 28px;
+line-height: 1.21;
+}
+
+@media only screen and (min-width: 768px) {
+.title {
+  font-size: 54px;
+line-height: 1.11;
+max-width: 614px;
+}
+}
+
+.title::after {
+  content: '';
+  width: 95px;
+  height: 93px;
+  position: absolute;
+  background-image: url('/RegisterLogin/Pill.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  top: -56px;
+  right: 20px;
+}
+
+@media only screen and (min-width: 768px) {
+.title::after {
+   width: 179px;
+  height: 175px;
+   top: -104px;
+  right: 19px;
+}
+}
+
+.accent {
+    color: var(--primary-color);
+}
