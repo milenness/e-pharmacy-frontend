@@ -50,7 +50,6 @@ background-color: var(--white);
 .field::placeholder {
 font-size: 12px;
 line-height: 1.5;
-color: rgba(29, 30, 33, 0.4);
 }
 
 .btn {
@@ -86,5 +85,6 @@ justify-content: center;
    justify-content: flex-start;
   position: relative;
   left: 67px;
+    max-width: 147px;
 }
 }

@@ -82,9 +82,9 @@ export default function RegisterForm() {
           </Form>
         </Formik>
         <Link
-          href="/register"
+          href="/login"
           className={css.registerLink}
-          aria-label="Go to register page"
+          aria-label="Go to login page"
         >
           Already have an account?
         </Link>
