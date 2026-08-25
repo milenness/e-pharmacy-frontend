@@ -1,0 +1,210 @@
+.list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+@media only screen and (min-width: 768px) {
+.list {
+  flex-direction: row;
+  row-gap: 32px;
+  column-gap: 16px;
+  flex-wrap: wrap;
+}
+}
+
+@media only screen and (min-width: 1440px) {
+.list {
+  row-gap: 40px;
+  column-gap: 20px;
+}
+}
+
+.item {
+    border: 1.15px solid var(--second-white);
+border-radius: 27px;
+background-color: #e7f1ed;
+background-image: url('/MedicineStores/Tel.png');
+background-repeat: no-repeat;
+ background-size: auto 115px;
+  background-position: right bottom;
+  padding: 32px 32px 40px 32px;
+}
+
+@media only screen and (min-width: 768px) {
+.item {
+  background-position: right top;
+width: calc((100% - 16px) / 2);
+   padding: 40px;
+   background-image: url('/StoresList/Pattern.png');
+   background-size: 135.73px auto;
+}
+}
+
+@media only screen and (min-width: 1440px) {
+.item {
+width: calc((100% - 40px) / 3);
+}
+}
+
+.wrapper {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.cardTitle {
+    font-size: 16px;
+line-height: 1.4;
+max-width: 123px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@media only screen and (min-width: 768px) {
+.cardTitle {
+  max-width: 100%;
+  font-size: 20px;
+}
+}
+
+.bottomBlock {
+  display: none;
+}
+
+@media only screen and (min-width: 768px) {
+.bottomBlock {
+ display: flex;
+ margin-top: 36px;
+ align-items: center;
+}
+
+.bottomLeft {
+  margin-left: auto;
+  display: flex;
+}
+}
+
+.leftBlock {
+  display: flex;
+   margin-left: auto;
+}
+
+@media only screen and (min-width: 768px) {
+.leftBlock {
+ display: none;
+}
+}
+
+.star {
+    align-self: center;
+    margin-right: 14px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.starIcon {
+    padding: 1px 0;
+    color: #ffc531;
+}
+
+.open {
+    font-weight: 600;
+font-size: 12px;
+line-height: 1.5;
+letter-spacing: -0.02em;
+text-align: center;
+text-transform: uppercase;
+color: var(--primary-color);
+background-color: rgba(89, 177, 122, 0.1);
+border-radius: 8px;
+padding: 8px 16px;
+align-self: center;
+}
+
+.close {
+     font-weight: 600;
+font-size: 12px;
+line-height: 1.5;
+letter-spacing: -0.02em;
+text-align: center;
+text-transform: uppercase;
+color: var(--red);
+background-color: rgba(232, 80, 80, 0.1);
+border-radius: 8px;
+padding: 8px 16px;
+align-self: center; 
+}
+
+.location {
+  display: grid;
+  grid-template-columns: 18px 1fr;
+  grid-template-rows: auto auto;
+  align-items: center;
+  column-gap: 8px;
+  row-gap: 4px;
+  margin-bottom: 18px;
+}
+
+@media only screen and (min-width: 768px) {
+.location {
+  margin-bottom: 14px;
+}
+}
+
+.locationIcon {
+    align-self: flex-start;
+    grid-column: 1;
+  grid-row: 1 / span 2;
+  color: var(--primary-color);
+}
+
+.address {
+  grid-column: 2;
+  grid-row: 1;
+  color: var(--text-gray);
+}
+
+.addAddress {
+  grid-column: 2;
+  grid-row: 2;
+   color: var(--text-gray);
+}
+
+.tel {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+@media only screen and (min-width: 768px) {
+.tel {
+  align-items: flex-start;
+}
+}
+
+.telIcon {
+   color: var(--primary-color); 
+}
+
+.telNumber {
+     color: var(--text-gray);
+}
+
+.storeLink {
+  font-weight: 500;
+font-size: 14px;
+line-height: 1;
+text-align: center;
+color: var(--white);
+padding: 10px 16px;
+display: flex;
+border-radius: 24px;
+background-color: var(--primary-color);
+transition: background-color var(--main-transition);
+}
+
+.storeLink:hover, .storeLink:focus, .storeLink:active {
+  background-color: var(--dark-green);
+}
