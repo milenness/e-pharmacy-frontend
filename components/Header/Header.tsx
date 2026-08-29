@@ -62,7 +62,7 @@ export default function Header() {
               <Link
                 href="/medicine"
                 className={`${css.navLink} ${
-                  pathname === "/medicine" ? css.active : ""
+                  pathname.startsWith("/medicine/") ? css.active : ""
                 }`}
                 style={{ paddingLeft: "17px", paddingRight: "17px" }}
                 aria-label="Go to medicine catalog page"
