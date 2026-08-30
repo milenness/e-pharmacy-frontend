@@ -1,31 +1,34 @@
 .detailWrapper {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
 @media only screen and (min-width: 768px) {
-.detailWrapper {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 16px;
-  align-items: start;
-}
-}
+  .detailWrapper {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 16px;
+    align-items: start;
+  }
 
-.deskWrapper {
-  grid-column: span 2;
-  display: flex;
-  flex-direction: column;
+  .deskWrapper {
+    grid-column: span 2;
+    display: flex;
+    flex-direction: column;
+  }
 }
 
 @media only screen and (min-width: 1440px) {
-.detailWrapper {
+  .detailWrapper {
     grid-template-areas:
       "img desk"
-      "cart desk";
+      "cart desk"
+      "empty desk";
       
-    gap: 20px;
+    grid-template-rows: auto auto 1fr;
+    gap: 0 20px;
+    align-items: start; 
   }
 
   .detailWrapper > *:nth-child(1) {
@@ -34,10 +37,12 @@
 
   .detailWrapper > *:nth-child(2) {
     grid-area: cart;
+    margin-top: 20px;
   }
 
-  .detailWrapper > *:nth-child(3) {
+  .deskWrapper {
     grid-area: desk;
+    grid-column: auto;
   }
 }
 
@@ -175,4 +180,94 @@ transition: color var(--main-transition), background-color var(--main-transition
 border-color: rgba(89, 177, 122, 0.5);
 background-color: transparent;
 color: var(--primary-color);
+}
+
+.deskWrapper {
+  background-color: var(--white);
+  border-radius: 27px;
+  padding: 20px 20px 40px 20px;
+}
+
+@media only screen and (min-width: 768px) {
+.deskWrapper {
+  padding: 32px 32px 64px 32px;
+}
+}
+
+@media only screen and (min-width: 1440px) {
+.deskWrapper {
+  padding: 40px 40px 66px 40px;
+}
+}
+
+.buttonsWrapper {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+@media only screen and (min-width: 768px) {
+.buttonsWrapper {
+margin-bottom: 32px;
+}
+}
+
+@media only screen and (min-width: 1440px) {
+.buttonsWrapper {
+margin-bottom: 40px;
+}
+}
+
+.deskButton {
+  padding: 8px 25px;
+  font-weight: 500;
+font-size: 14px;
+letter-spacing: -0.05em;
+color: var(--primary-color);
+background-color: rgba(89, 177, 122, 0.1);
+border-radius: 40px;
+}
+
+.active {
+  color: var(--white);
+  background-color: var(--primary-color);
+}
+
+.mainDesk {
+  color: #6a6a6f;
+  margin-bottom: 20px;
+}
+
+@media only screen and (min-width: 768px) {
+.mainDesk, .deskItem {
+line-height: 1.5;
+}
+}
+
+.deskList {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+@media only screen and (min-width: 1440px) {
+.deskList {
+padding-bottom: 14px;
+}
+}
+
+.accent {
+  color: #6a6a6f;
+}
+
+.reviewsList {
+  display: flex;
+  gap: 20px;
+  flex-direction: column;
+}
+
+@media only screen and (min-width: 768px) {
+.reviewsList {
+  padding-bottom: 6px;
+}
 }
