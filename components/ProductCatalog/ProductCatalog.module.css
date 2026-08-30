@@ -44,6 +44,8 @@ border-radius: 20px;
 background-color: #f7f7f7;
 object-fit: cover;
   object-position: center;
+  width: 335px;
+  height: 300px;
 }
 
 @media only screen and (min-width: 768px) {

@@ -1,28 +1,38 @@
 import css from "./DetailInfo.module.css";
 import Image from "next/image";
+import { CgMathPlus } from "react-icons/cg";
+import { HiMiniMinus } from "react-icons/hi2";
 
 export default function DetailInfo() {
   return (
     <div className={css.detailWrapper}>
-      <div className={css.imgCartWrapper}>
-        <Image
-          className={css.img}
-          src="/Catalog/Default.jpg"
-          alt=""
-          width={335}
-          height={337}
-          priority
-        />
-        <div className={css.cartWrapper}>
-          <div className={css.titleCostWrapper}>
-            <h2 className={css.title}>Moringa</h2>
-            <span>৳470</span>
+      <Image
+        className={css.img}
+        src="/Catalog/Default.jpg"
+        alt=""
+        width={335}
+        height={337}
+        priority
+      />
+      <div className={css.cartWrapper}>
+        <div className={css.titleCostWrapper}>
+          <h2 className={css.title}>Moringa</h2>
+          <span className={css.cost}>৳470</span>
+        </div>
+        <p className={css.brand}>Brand: Roofing (Asphalt)</p>
+        <div className={css.buttonsAdd}>
+          <div className={css.counter}>
+            <button type="button" className={css.plusBtn}>
+              <CgMathPlus size={20} />
+            </button>
+            <span className={css.number}>1</span>
+            <button type="button" className={css.minusBtn}>
+              <HiMiniMinus size={20} />
+            </button>
           </div>
-          <div className={css.buttonsAdd}>
-            <button type="button">+</button>
-            <span>1</span>
-            <button type="button">-</button>
-          </div>
+          <button type="button" className={css.addCart}>
+            Add to cart
+          </button>
         </div>
       </div>
       <div className={css.deskWrapper}>
