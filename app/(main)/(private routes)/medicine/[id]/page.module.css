@@ -1,0 +1,17 @@
+.section {
+    padding-top: 34px;
+   padding-bottom: 80px;
+}
+
+@media only screen and (min-width: 768px) {
+  .section {
+   padding-top: 32px;
+    padding-bottom: 120px;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .section {
+   padding-top: 70px;
+  }
+}

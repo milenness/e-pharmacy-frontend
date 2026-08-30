@@ -107,10 +107,20 @@ margin-bottom: 14px;
 }
 
 .cartButton {
-  padding: 10px 16px;
+  padding: 9px 16px;
+  border: 1px solid var(--primary-color);
   font-weight: 500;
 font-size: 14px;
 line-height: 1;
+transition: color var(--main-transition), background-color var(--main-transition), border-color var(--main-transition);
+}
+
+.cartButton:hover, 
+.cartButton:focus,
+.cartButton:active {
+border-color: rgba(89, 177, 122, 0.5);
+background-color: transparent;
+color: var(--primary-color);
 }
 
 .detailsLink {

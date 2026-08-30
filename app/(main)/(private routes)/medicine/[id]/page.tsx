@@ -1,8 +1,11 @@
+import css from "./page.module.css";
+import DetailInfo from "@/components/DetailInfo";
+
 export default function MedicinePage() {
   return (
-    <section>
+    <section className={css.section}>
       <div className="container">
-        <h1>Medicine</h1>
+        <DetailInfo/>
       </div>
     </section>
   );
