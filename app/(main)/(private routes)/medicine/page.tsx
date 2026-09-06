@@ -1,12 +1,13 @@
 import css from "./page.module.css"
 import ProductCatalog from "@/components/ProductCatalog"
+import SearchFilterPanel from "@/components/SearchFilterPanel";
 
 export default function MedicinePage() {
   return (
     <section className={css.section}>
       <div className="container">
         <h1 className={css.title}>Medicine</h1>
-        {/* <SearchFilterPanel /> */}
+        <SearchFilterPanel />
         <ProductCatalog />
       </div>
     </section>
