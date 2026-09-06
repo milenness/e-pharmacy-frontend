@@ -5,6 +5,7 @@ import css from "./DetailInfo.module.css";
 import Image from "next/image";
 import { CgMathPlus } from "react-icons/cg";
 import { HiMiniMinus } from "react-icons/hi2";
+import { FaStar } from "react-icons/fa6";
 
 export default function DetailInfo() {
   const [activeTab, setActiveTab] = useState<"description" | "reviews">(
@@ -122,7 +123,149 @@ export default function DetailInfo() {
 
         {activeTab === "reviews" && (
           <ul className={css.reviewsList}>
-           <li></li>
+            <li className={css.reviewItem}>
+              <div className={css.reviewTop}>
+                <Image
+                  className={css.reviewAvatar}
+                  src="/DefaultAvatar.jpg"
+                  alt=""
+                  width={44}
+                  height={44}
+                  priority
+                />
+                <div className={css.reviewContent}>
+                  <h4 className={css.reviewAuthor}>Leroy Jenkins</h4>
+                  <span className={css.reviewDays}>2 days ago</span>
+                </div>
+
+                <div className={css.reviewStarsTel}>
+                  <FaStar className={css.starIcon} size={16} /> 4
+                </div>
+
+                <div className={css.reviewStarsDesk}>
+                  <ul className={css.reviewStars}>
+                    <li className={css.reviewNamber}>
+                      <FaStar className={css.starIcon} size={16} />
+                    </li>
+                    <li className={css.reviewNamber}>
+                      <FaStar className={css.starIcon} size={16} />
+                    </li>
+                    <li className={css.reviewNamber}>
+                      <FaStar className={css.starIcon} size={16} />
+                    </li>
+                    <li className={css.reviewNamber}>
+                      <FaStar className={css.starIcon} size={16} />
+                    </li>
+                    <li className={css.reviewNamber}>
+                      <FaStar className={css.empty} size={16} />
+                    </li>
+                  </ul>
+                  4
+                </div>
+              </div>
+              <p className={css.reviewText}>
+                I&apos;ve been using Moringa powder in my smoothies for a few
+                weeks now. My energy levels are up, and I feel great. I followed
+                the recommended dosage, and it seems to be a perfect addition to
+                my daily routine. Highly recommend!
+              </p>
+            </li>
+
+            <li className={css.reviewItem}>
+              <div className={css.reviewTop}>
+                <Image
+                  className={css.reviewAvatar}
+                  src="/DefaultAvatar.jpg"
+                  alt=""
+                  width={44}
+                  height={44}
+                  priority
+                />
+                <div className={css.reviewContent}>
+                  <h4 className={css.reviewAuthor}>Leroy Jenkins</h4>
+                  <span className={css.reviewDays}>2 days ago</span>
+                </div>
+
+                <div className={css.reviewStarsTel}>
+                  <FaStar className={css.starIcon} size={16} /> 4
+                </div>
+
+                <div className={css.reviewStarsDesk}>
+                  <ul className={css.reviewStars}>
+                    <li className={css.reviewNamber}>
+                      <FaStar className={css.starIcon} size={16} />
+                    </li>
+                    <li className={css.reviewNamber}>
+                      <FaStar className={css.starIcon} size={16} />
+                    </li>
+                    <li className={css.reviewNamber}>
+                      <FaStar className={css.starIcon} size={16} />
+                    </li>
+                    <li className={css.reviewNamber}>
+                      <FaStar className={css.starIcon} size={16} />
+                    </li>
+                    <li className={css.reviewNamber}>
+                      <FaStar className={css.empty} size={16} />
+                    </li>
+                  </ul>
+                  4
+                </div>
+              </div>
+              <p className={css.reviewText}>
+                I tried Moringa capsules as part of my wellness regimen, and
+                I&apos;ve been pleasantly surprised by the results. My skin
+                looks healthier, and I&apos;ve noticed an improvement in my
+                digestion. A natural and effective supplement!
+              </p>
+            </li>
+
+            <li className={css.reviewItem}>
+              <div className={css.reviewTop}>
+                <Image
+                  className={css.reviewAvatar}
+                  src="/DefaultAvatar.jpg"
+                  alt=""
+                  width={44}
+                  height={44}
+                  priority
+                />
+                <div className={css.reviewContent}>
+                  <h4 className={css.reviewAuthor}>Leroy Jenkins</h4>
+                  <span className={css.reviewDays}>2 days ago</span>
+                </div>
+
+                <div className={css.reviewStarsTel}>
+                  <FaStar className={css.starIcon} size={16} /> 4
+                </div>
+
+                <div className={css.reviewStarsDesk}>
+                  <ul className={css.reviewStars}>
+                    <li className={css.reviewNamber}>
+                      <FaStar className={css.starIcon} size={16} />
+                    </li>
+                    <li className={css.reviewNamber}>
+                      <FaStar className={css.starIcon} size={16} />
+                    </li>
+                    <li className={css.reviewNamber}>
+                      <FaStar className={css.starIcon} size={16} />
+                    </li>
+                    <li className={css.reviewNamber}>
+                      <FaStar className={css.starIcon} size={16} />
+                    </li>
+                    <li className={css.reviewNamber}>
+                      <FaStar className={css.empty} size={16} />
+                    </li>
+                  </ul>
+                  4
+                </div>
+              </div>
+              <p className={css.reviewText}>
+                I added Moringa oil to my skincare routine, and the results are
+                amazing. My skin feels smoother and more nourished. I was
+                skeptical at first, but now I&apos;m a firm believer in its
+                benefits.
+              </p>
+            </li>
           </ul>
         )}
       </div>
