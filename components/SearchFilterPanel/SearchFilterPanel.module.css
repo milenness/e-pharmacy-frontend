@@ -32,6 +32,21 @@
 .searchWrapper {
   margin-right: 8px;
 }
+
+.categoryWrapper .field {
+  width: 214px;
+  cursor: pointer;
+  transition: border-color var(--main-transition);
+}
+
+.categoryWrapper .field:hover,
+.categoryWrapper .field:active {
+  border-color: var(--primary-color);
+}
+
+.searchWrapper .field {
+  width: 224px;
+}
 }
 
 @media only screen and (min-width: 1440px) {
@@ -57,4 +72,57 @@
   top: 50%;
   right: 18px;
   transform: translateY(-50%);
+}
+
+.field {
+  padding: 13px 38px 13px 18px;
+  border: 1px solid rgba(29, 30, 33, 0.1);
+border-radius: 60px;
+font-size: 12px;
+line-height: 1.5;
+width: 100%;
+
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  outline: none;
+}
+
+@media only screen and (min-width: 1440px) {
+.field {
+  width: auto;
+}
+}
+
+.field::placeholder, .field.isPlaceholder {
+  font-size: 12px;
+line-height: 1.5;
+color: rgba(29, 30, 33, 0.4);
+}
+
+.field option {
+ font-size: 12px;
+line-height: 1.5;
+color: var(--text-dark);
+}
+
+.btn {
+  display: flex;
+  border: 1px solid var(--primary-color);
+  gap: 8px;
+  align-items: center;
+width: max-content;
+padding: 12px 29px;
+font-weight: 500;
+font-size: 14px;
+line-height: 1.29;
+transition: color var(--main-transition), background-color var(--main-transition), border-color var(--main-transition);
+}
+
+.btn:hover, 
+.btn:focus,
+.btn:active {
+border-color: rgba(89, 177, 122, 0.5);
+background-color: transparent;
+color: var(--primary-color);
 }

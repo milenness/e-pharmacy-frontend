@@ -26,13 +26,32 @@ export default function SearchFilterPanel() {
           <label className={css.hidden} htmlFor={categoryFieldId}>
             Product category
           </label>
-          <Field
-            className={css.field}
-            type="text"
-            name="category"
-            id={categoryFieldId}
-            placeholder="Product category"
-          />
+          <Field name="category">
+            {({
+              field,
+            }: {
+              field: {
+                value: string;
+                name: string;
+                onChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
+                onBlur: (e: React.FocusEvent<HTMLSelectElement>) => void;
+              };
+            }) => (
+              <select
+                {...field}
+                id={categoryFieldId}
+                className={`${css.field} ${!field.value ? css.isPlaceholder : ""}`}
+              >
+                <option value="" disabled hidden>
+                  Product category
+                </option>
+                <option value="all">All categories</option>
+                <option value="vitamins">Vitamins</option>
+                <option value="supplements">Supplements</option>
+                <option value="medicines">Medicines</option>
+              </select>
+            )}
+          </Field>
           <IoIosArrowDown className={css.icon} size={16} />
         </div>
 
@@ -51,7 +70,7 @@ export default function SearchFilterPanel() {
         </div>
 
         <button className={css.btn} type="submit">
-          <LuFilter className={css.btnIcon} size={14} /> Filter
+          <LuFilter className={css.buttonIcon} size={14} /> Filter
         </button>
       </Form>
     </Formik>
