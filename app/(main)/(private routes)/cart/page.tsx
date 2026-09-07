@@ -5,10 +5,14 @@ export default function CartPage() {
     <section className={css.section}>
       <div className="container">
         <h2 className={css.title}>Cart</h2>
-        {/* <ShippingInfo />
-        <PaymentMethod />
-        <OrderDetails />  */}
-        {/* <CartList /> */}
+        <div className={css.cartContainer}>
+          <div className={css.cartWrapper}>
+            {/* <ShippingInfo />
+            <PaymentMethod />
+            <OrderDetails />  */}
+          </div>
+          {/* <CartList /> */}
+        </div>
       </div>
     </section>
   );
