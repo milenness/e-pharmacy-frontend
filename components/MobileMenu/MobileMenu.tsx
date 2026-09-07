@@ -62,7 +62,9 @@ export default function MobileMenu({ onClose }: ModalProps) {
             <Link
               href="/medicine"
               className={`${css.navLink} ${
-                pathname === "/medicine" ? css.active : ""
+                pathname === "/medicine" || pathname.startsWith("/medicine/")
+                  ? css.active
+                  : ""
               }`}
               style={{ paddingLeft: "17px", paddingRight: "17px" }}
               aria-label="Go to medicine catalog page"

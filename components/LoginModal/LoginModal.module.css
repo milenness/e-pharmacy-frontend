@@ -101,6 +101,7 @@ background-color: var(--white);
 .field::placeholder {
 font-size: 12px;
 line-height: 1.5;
+color:rgba(29, 30, 33, 0.4);
 }
 
 .btn {
@@ -119,6 +120,7 @@ transition: background-color var(--main-transition);
 }
 
 .redisterBtn {
+  background-color: transparent;
     font-size: 12px;
 line-height: 1.5;
 color: rgba(29, 30, 33, 0.4);

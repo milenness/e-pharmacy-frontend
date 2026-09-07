@@ -60,7 +60,7 @@ margin-bottom: 14px;
   color: var(--text-gray);
   text-align: center;
   margin: 0 auto 25px;
-  max-width:280px;
+  max-width: 280px;
 }
 
 .form {
@@ -101,6 +101,7 @@ background-color: var(--white);
 .field::placeholder {
 font-size: 12px;
 line-height: 1.5;
+color:rgba(29, 30, 33, 0.4);
 }
 
 .btn {
@@ -118,7 +119,8 @@ transition: background-color var(--main-transition);
     background-color: var(--dark-green);
 }
 
-.redisterBtn {
+.loginBtn {
+  background-color: transparent;
     font-size: 12px;
 line-height: 1.5;
 color: rgba(29, 30, 33, 0.4);

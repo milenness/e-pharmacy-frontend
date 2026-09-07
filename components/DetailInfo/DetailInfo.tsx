@@ -6,18 +6,18 @@ import Image from "next/image";
 import { CgMathPlus } from "react-icons/cg";
 import { HiMiniMinus } from "react-icons/hi2";
 import { FaStar } from "react-icons/fa6";
-import LoginModal from "@/components/LoginModal"; // Шлях можеш скоригувати під свій проєкт
+import LoginModal from "@/components/LoginModal";
+import RegisterModal from "@/components/RegisterModal";
 
 export default function DetailInfo() {
   const [activeTab, setActiveTab] = useState<"description" | "reviews">(
     "description",
   );
 
-  // Стан для відкриття/закриття модалки
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  // Стан для керування модалками: "login", "register" або null (коли обидві закриті)
+  const [modalType, setModalType] = useState<"login" | "register" | null>(null);
 
-  const openModal = () => setIsModalOpen(true);
-  const closeModal = () => setIsModalOpen(false);
+  const closeModal = () => setModalType(null);
 
   return (
     <div className={css.detailWrapper}>
@@ -45,8 +45,12 @@ export default function DetailInfo() {
               <HiMiniMinus size={20} />
             </button>
           </div>
-          {/* Повісили відкриття модалки на кнопку Add to cart */}
-          <button type="button" className={css.addCart} onClick={openModal}>
+          {/* Повісили відкриття модалки логіну на кнопку Add to cart */}
+          <button
+            type="button"
+            className={css.addCart}
+            onClick={() => setModalType("login")}
+          >
             Add to cart
           </button>
         </div>
@@ -278,8 +282,21 @@ export default function DetailInfo() {
         )}
       </div>
 
-      {/* Рендеримо модалку тимчасово тут */}
-      {isModalOpen && <LoginModal onClose={closeModal} />}
+      {/* Рендеримо модалку логіну */}
+      {modalType === "login" && (
+        <LoginModal
+          onClose={closeModal}
+          onSwitchToRegister={() => setModalType("register")}
+        />
+      )}
+
+      {/* Рендеримо модалку реєстрації */}
+      {modalType === "register" && (
+        <RegisterModal
+          onClose={closeModal}
+          onSwitchToLogin={() => setModalType("login")}
+        />
+      )}
     </div>
   );
 }

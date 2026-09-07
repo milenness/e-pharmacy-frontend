@@ -3,16 +3,19 @@
 import { useEffect } from "react";
 import { createPortal } from "react-dom";
 import { IoClose } from "react-icons/io5";
-import css from "./LoginModal.module.css";
+import css from "./RegisterModal.module.css";
 import { useId } from "react";
 import { Formik, Form, Field } from "formik";
-import Link from "next/link";
 
-interface LoginModalProps {
+interface RegisterModalProps {
   onClose: () => void;
+  onSwitchToLogin: () => void;
 }
 
-export default function RegisterModal({ onClose }: LoginModalProps) {
+export default function RegisterModal({
+  onClose,
+  onSwitchToLogin,
+}: RegisterModalProps) {
   const handleBackdropClick = (event: React.MouseEvent<HTMLDivElement>) => {
     if (event.target === event.currentTarget) {
       onClose();
@@ -35,7 +38,7 @@ export default function RegisterModal({ onClose }: LoginModalProps) {
     };
   }, [onClose]);
 
-   const fieldId = useId();
+  const fieldId = useId();
 
   return createPortal(
     <div
@@ -129,13 +132,15 @@ export default function RegisterModal({ onClose }: LoginModalProps) {
             </button>
           </Form>
         </Formik>
-        <Link
-          href="/login"
-          className={css.registerLink}
-          aria-label="Go to login page"
+
+        <button
+          type="button"
+          onClick={onSwitchToLogin}
+          className={css.loginBtn}
+          aria-label="Switch to login form"
         >
           Already have an account?
-        </Link>
+        </button>
       </div>
     </div>,
     document.body,
