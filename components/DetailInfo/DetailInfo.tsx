@@ -6,11 +6,18 @@ import Image from "next/image";
 import { CgMathPlus } from "react-icons/cg";
 import { HiMiniMinus } from "react-icons/hi2";
 import { FaStar } from "react-icons/fa6";
+import LoginModal from "@/components/LoginModal"; // Шлях можеш скоригувати під свій проєкт
 
 export default function DetailInfo() {
   const [activeTab, setActiveTab] = useState<"description" | "reviews">(
     "description",
   );
+
+  // Стан для відкриття/закриття модалки
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
 
   return (
     <div className={css.detailWrapper}>
@@ -38,7 +45,8 @@ export default function DetailInfo() {
               <HiMiniMinus size={20} />
             </button>
           </div>
-          <button type="button" className={css.addCart}>
+          {/* Повісили відкриття модалки на кнопку Add to cart */}
+          <button type="button" className={css.addCart} onClick={openModal}>
             Add to cart
           </button>
         </div>
@@ -269,6 +277,9 @@ export default function DetailInfo() {
           </ul>
         )}
       </div>
+
+      {/* Рендеримо модалку тимчасово тут */}
+      {isModalOpen && <LoginModal onClose={closeModal} />}
     </div>
   );
 }
