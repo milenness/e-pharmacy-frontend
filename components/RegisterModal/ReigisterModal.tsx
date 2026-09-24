@@ -1,11 +1,11 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState, useId } from "react";
 import { createPortal } from "react-dom";
 import { IoClose } from "react-icons/io5";
 import css from "./RegisterModal.module.css";
-import { useId } from "react";
 import { Formik, Form, Field } from "formik";
+import { useAuthStore } from "@/store/authStore";
 
 interface RegisterModalProps {
   onClose: () => void;
@@ -40,6 +40,18 @@ export default function RegisterModal({
 
   const fieldId = useId();
 
+  const { register, error, clearError } = useAuthStore();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setMounted(true);
+  }, []);
+
+  if (!mounted) return null;
+
   return createPortal(
     <div
       className={css.backdrop}
@@ -68,8 +80,22 @@ export default function RegisterModal({
             phone: "",
             password: "",
           }}
-          onSubmit={(values) => {
-            console.log("Form submitted:", values);
+          onSubmit={async (values) => {
+            clearError();
+            setIsSubmitting(true);
+            try {
+              await register({
+                name: values.username,
+                email: values.email,
+                phone: values.phone,
+                password: values.password,
+              });
+              onClose();
+            } catch (err) {
+              console.error("Registration failed:", err);
+            } finally {
+              setIsSubmitting(false);
+            }
           }}
         >
           <Form className={css.form}>
@@ -84,6 +110,7 @@ export default function RegisterModal({
                   name="username"
                   id={`${fieldId}-username`}
                   placeholder="User Name"
+                  required
                 />
               </div>
 
@@ -97,6 +124,7 @@ export default function RegisterModal({
                   name="email"
                   id={`${fieldId}-email`}
                   placeholder="Email address"
+                  required
                 />
               </div>
 
@@ -123,12 +151,19 @@ export default function RegisterModal({
                   name="password"
                   id={`${fieldId}-password`}
                   placeholder="Password"
+                  required
                 />
               </div>
             </div>
 
-            <button className={css.btn} type="submit">
-              Register
+            {error && (
+              <p style={{ color: "red", marginTop: "10px", fontSize: "14px" }}>
+                {error}
+              </p>
+            )}
+
+            <button className={css.btn} type="submit" disabled={isSubmitting}>
+              {isSubmitting ? "Registering..." : "Register"}
             </button>
           </Form>
         </Formik>

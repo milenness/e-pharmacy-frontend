@@ -1,12 +1,18 @@
 "use client";
 
-import { useId } from "react";
+import { useId, useState } from "react";
 import { Formik, Form, Field } from "formik";
 import css from "./LoginForm.module.css";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useAuthStore } from "@/store/authStore";
 
 export default function LoginForm() {
   const fieldId = useId();
+  const router = useRouter();
+
+  const { login, error, clearError } = useAuthStore();
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   return (
     <div className={css.authContainer}>
@@ -15,8 +21,17 @@ export default function LoginForm() {
           email: "",
           password: "",
         }}
-        onSubmit={(values) => {
-          console.log("Login submitted:", values);
+        onSubmit={async (values) => {
+          clearError();
+          setIsSubmitting(true);
+          try {
+            await login(values);
+            router.push("/");
+          } catch (err) {
+            console.error("Помилка логіну:", err);
+          } finally {
+            setIsSubmitting(false);
+          }
         }}
       >
         <Form className={css.form}>
@@ -31,6 +46,7 @@ export default function LoginForm() {
                 name="email"
                 id={`${fieldId}-email`}
                 placeholder="Email address"
+                required
               />
             </div>
 
@@ -44,12 +60,19 @@ export default function LoginForm() {
                 name="password"
                 id={`${fieldId}-password`}
                 placeholder="Password"
+                required
               />
             </div>
           </div>
 
-          <button className={css.btn} type="submit">
-            Log in
+          {error && (
+            <p style={{ color: "red", marginTop: "10px", fontSize: "14px" }}>
+              {error}
+            </p>
+          )}
+
+          <button className={css.btn} type="submit" disabled={isSubmitting}>
+            {isSubmitting ? "Logging in..." : "Log in"}
           </button>
         </Form>
       </Formik>

@@ -1,11 +1,11 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState, useId } from "react";
 import { createPortal } from "react-dom";
 import { IoClose } from "react-icons/io5";
 import css from "./LoginModal.module.css";
-import { useId } from "react";
 import { Formik, Form, Field } from "formik";
+import { useAuthStore } from "@/store/authStore";
 
 interface LoginModalProps {
   onClose: () => void;
@@ -40,6 +40,18 @@ export default function LoginModal({
 
   const fieldId = useId();
 
+  const { login, error, clearError } = useAuthStore();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setMounted(true);
+  }, []);
+
+  if (!mounted) return null;
+
   return createPortal(
     <div
       className={css.backdrop}
@@ -66,8 +78,17 @@ export default function LoginModal({
             email: "",
             password: "",
           }}
-          onSubmit={(values) => {
-            console.log("Login submitted:", values);
+          onSubmit={async (values) => {
+            clearError();
+            setIsSubmitting(true);
+            try {
+              await login(values);
+              onClose();
+            } catch (err) {
+              console.error("Login failed:", err);
+            } finally {
+              setIsSubmitting(false);
+            }
           }}
         >
           <Form className={css.form}>
@@ -82,6 +103,7 @@ export default function LoginModal({
                   name="email"
                   id={`${fieldId}-email`}
                   placeholder="Email address"
+                  required
                 />
               </div>
 
@@ -95,12 +117,19 @@ export default function LoginModal({
                   name="password"
                   id={`${fieldId}-password`}
                   placeholder="Password"
+                  required
                 />
               </div>
             </div>
 
-            <button className={css.btn} type="submit">
-              Log in
+            {error && (
+              <p style={{ color: "red", marginTop: "10px", fontSize: "14px" }}>
+                {error}
+              </p>
+            )}
+
+            <button className={css.btn} type="submit" disabled={isSubmitting}>
+              {isSubmitting ? "Logging in..." : "Log in"}
             </button>
           </Form>
         </Formik>

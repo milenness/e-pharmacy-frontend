@@ -236,8 +236,9 @@ top: -2px;
 }
 
 .nameItem {
-    padding: 10px 18px;
     display: flex;
+    align-items: center;
+    justify-content: center;
      width: 40px;
     height: 40px;
     border-radius: 100%;
@@ -254,7 +255,6 @@ color:var(--primary-color);
 
 @media only screen and (min-width: 768px) {
 .nameItem {
-    padding: 10px 20px;
      width: 44px;
     height: 44px;
     font-size: 18px;
@@ -270,4 +270,36 @@ color:var(--primary-color);
     display: flex;
     margin-left: 12px;
 }
+}
+
+.logOutBtn {
+   border: 1px solid rgba(89, 177, 122, 0.5);
+border-radius: 60px;
+padding: 16px 32px;
+background-color: transparent;
+color: var(--primary-color);
+font-size: 14px;
+line-height: 1;
+transition: background-color var(--main-transition), border-color var(--main-transition), color var(--main-transition);
+}
+
+.logOutBtn:hover, 
+.logOutBtn:active, 
+.logOutBtn:focus {
+    background-color: var(--primary-color);
+      border-color: var(--primary-color);
+      color: var(--white);
+}
+
+.homeLogOutBtn {
+color: var(--second-white);
+border: 1px solid rgba(241, 241, 241, 0.5);
+transition: background-color var(--main-transition), border-color var(--main-transition) ;
+}
+
+.homeLogOutBtn:hover, 
+.homeLogOutBtn:active, 
+.homeLogOutBtn:focus {
+    background-color: var(--dark-green);
+      border-color: var(--dark-green);
 }

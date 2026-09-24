@@ -1,20 +1,38 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { IoIosMenu } from "react-icons/io";
-// import { PiShoppingCartSimpleBold } from "react-icons/pi";
+import { PiShoppingCartSimpleBold } from "react-icons/pi";
 
 import css from "./Header.module.css";
 import MobileMenu from "@/components/MobileMenu";
+import { useAuthStore } from "@/store/authStore";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const pathname = usePathname();
+  const router = useRouter();
+
+  const { isLoggedIn, user, logout } = useAuthStore();
 
   const isHomePage = pathname === "/";
+
+  const userInitial = user?.name ? user.name.charAt(0).toUpperCase() : "U";
+
+  const handleLogout = async () => {
+    await logout();
+    router.push("/");
+  };
+
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setMounted(true);
+  }, []);
 
   return (
     <header className={`${css.header} ${isHomePage ? css.homeHeader : ""}`}>
@@ -74,56 +92,60 @@ export default function Header() {
             </li>
           </ul>
 
-          <ul className={css.authList}>
-            <li className={css.authItem}>
-              <Link
-                href="/register"
-                className={`${css.registerLink} ${isHomePage ? css.homeRegisterLink : ""}`}
-                aria-label="Go to register page"
-              >
-                Register
-              </Link>
-            </li>
+          {mounted && !isLoggedIn && (
+            <ul className={css.authList}>
+              <li className={css.authItem}>
+                <Link
+                  href="/register"
+                  className={`${css.registerLink} ${isHomePage ? css.homeRegisterLink : ""}`}
+                  aria-label="Go to register page"
+                >
+                  Register
+                </Link>
+              </li>
 
-            <li className={css.authItem}>
-              <Link
-                href="/login"
-                className={`${css.loginLink} ${isHomePage ? css.homeLoginLink : ""}`}
-                aria-label="Go to login page"
-              >
-                Login
-              </Link>
-            </li>
-          </ul>
+              <li className={css.authItem}>
+                <Link
+                  href="/login"
+                  className={`${css.loginLink} ${isHomePage ? css.homeLoginLink : ""}`}
+                  aria-label="Go to login page"
+                >
+                  Login
+                </Link>
+              </li>
+            </ul>
+          )}
 
-          {/* <ul className={css.userList}>
-            <li className={css.cartItem}>
-              <Link
-                href="/cart"
-                className={css.cartLink}
-                aria-label="Go to cart page"
-              >
-                <PiShoppingCartSimpleBold size={16} />
-              </Link>
-              <p className={css.count}>0</p>
-            </li>
+          {mounted && isLoggedIn && (
+            <ul className={css.userList}>
+              <li className={css.cartItem}>
+                <Link
+                  href="/cart"
+                  className={css.cartLink}
+                  aria-label="Go to cart page"
+                >
+                  <PiShoppingCartSimpleBold size={16} />
+                </Link>
+                <p className={css.count}>0</p>
+              </li>
 
-            <li
-              className={`${css.nameItem} ${isHomePage ? css.homeNameItem : ""}`}
-            >
-              I
-            </li>
-
-            <li className={css.logOutItem}>
-              <Link
-                href="/"
-                className={`${css.registerLink} ${isHomePage ? css.homeRegisterLink : ""}`}
-                aria-label="Log out"
+              <li
+                className={`${css.nameItem} ${isHomePage ? css.homeNameItem : ""}`}
               >
-                Log out
-              </Link>
-            </li>
-          </ul> */}
+                {userInitial}
+              </li>
+
+              <li className={css.logOutItem}>
+                <button
+                  onClick={handleLogout}
+                  className={`${css.logOutBtn} ${isHomePage ? css.homeLogOutBtn : ""}`}
+                  aria-label="Log out"
+                >
+                  Log out
+                </button>
+              </li>
+            </ul>
+          )}
 
           <button
             type="button"

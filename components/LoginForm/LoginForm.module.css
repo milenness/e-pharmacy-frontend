@@ -26,6 +26,8 @@
 }
 
 .field {
+    font-size: 12px;
+line-height: 1.5;
     padding: 13px 18px;
     border: 1px solid rgba(29, 30, 33, 0.1);
 border-radius: 60px;
