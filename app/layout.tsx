@@ -4,7 +4,7 @@ import "./globals.css";
 import { Toaster } from "react-hot-toast";
 
 import QueryProvider from "@/components/QueryProvider";
-import GlobalLoader from "@/components/Loader/GlobalLoader"; // Імпортуємо наш лоадер
+import GlobalLoader from "@/components/Loader/GlobalLoader";
 
 const inter = Inter({
   subsets: ["latin", "cyrillic"],
@@ -14,8 +14,8 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: {
-    default: "E-Pharmacy | Online Medicine Store",
-    template: "%s | E-Pharmacy",
+    default: "E-Pharmacy",
+    template: "%s",
   },
   description:
     "Your medication delivered. Say goodbye to all your healthcare worries with E-Pharmacy. Order prescriptions, find nearest stores, and manage your health from home.",

@@ -60,31 +60,37 @@ export default function Footer() {
 
           <ul className={css.socialList}>
             <li className={css.socialItem}>
-              <Link
+              <a
                 href="https://www.facebook.com/goITclub/"
+                target="_blank"
+                rel="noopener noreferrer"
                 className={css.socialLink}
-                aria-label="Go to medicine catalog page"
+                aria-label="Go to Facebook page"
               >
                 <ImFacebook size={20} />
-              </Link>
+              </a>
             </li>
             <li className={css.socialItem}>
-              <Link
-                href="https://www.facebook.com/goITclub/"
+              <a
+                href="https://www.instagram.com"
+                target="_blank"
+                rel="noopener noreferrer"
                 className={css.socialLink}
-                aria-label="Go to medicine catalog page"
+                aria-label="Go to Instagram page"
               >
                 <RiInstagramFill size={23} />
-              </Link>
+              </a>
             </li>
             <li className={css.socialItem}>
-              <Link
+              <a
                 href="https://www.youtube.com/c/GoIT"
+                target="_blank"
+                rel="noopener noreferrer"
                 className={css.socialLink}
-                aria-label="Go to medicine catalog page"
+                aria-label="Go to YouTube page"
               >
                 <FaYoutube size={25} />
-              </Link>
+              </a>
             </li>
           </ul>
         </div>
@@ -95,14 +101,14 @@ export default function Footer() {
           <Link
             href="/"
             className={`${css.bottomLink} ${css.bottomItem}`}
-            aria-label="Go to medicine catalog page"
+            aria-label="Go to privacy policy page"
           >
             Privacy Policy
           </Link>
           <Link
             href="/"
             className={`${css.bottomLink} ${css.bottomItem}`}
-            aria-label="Go to medicine catalog page"
+            aria-label="Go to terms and conditions page"
           >
             Terms & Conditions
           </Link>

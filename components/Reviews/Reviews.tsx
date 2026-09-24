@@ -37,22 +37,26 @@ export default function Reviews() {
         <p className={css.text}>Search for Medicine, Filter by your location</p>
 
         <ul className={css.list}>
-          {reviews.slice(0, limit).map((review, index) => (
-            <li className={css.item} key={review._id || index}>
-              <h3 className={css.titleItem}>{review.name || "Anonymous"}</h3>
-              <p className={css.textItem}>
-                {review.testimonial || "No comment provided."}
-              </p>
-              <Image
-                className={css.avatar}
-                src={review.avatar || "/DefaultAvatar.jpg"}
-                alt={review.name || "User avatar"}
-                width={64}
-                height={64}
-                priority
-              />
-            </li>
-          ))}
+          {reviews.slice(0, limit).map((review, index) => {
+            const reviewImageSrc = `/Reviews/Img-${index + 1}.png`;
+
+            return (
+              <li className={css.item} key={review._id || index}>
+                <h3 className={css.titleItem}>{review.name || "Anonymous"}</h3>
+                <p className={css.textItem}>
+                  {review.testimonial || "No comment provided."}
+                </p>
+                <Image
+                  className={css.avatar}
+                  src={reviewImageSrc}
+                  alt={review.name || "User avatar"}
+                  width={64}
+                  height={64}
+                  priority
+                />
+              </li>
+            );
+          })}
         </ul>
       </div>
     </section>
