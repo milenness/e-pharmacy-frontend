@@ -6,6 +6,7 @@ import { IoClose } from "react-icons/io5";
 import css from "./RegisterModal.module.css";
 import { Formik, Form, Field } from "formik";
 import { useAuthStore } from "@/store/authStore";
+import toast from "react-hot-toast";
 
 interface RegisterModalProps {
   onClose: () => void;
@@ -40,7 +41,7 @@ export default function RegisterModal({
 
   const fieldId = useId();
 
-  const { register, error, clearError } = useAuthStore();
+  const { register, clearError } = useAuthStore();
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const [mounted, setMounted] = useState(false);
@@ -91,8 +92,10 @@ export default function RegisterModal({
                 password: values.password,
               });
               onClose();
-            } catch (err) {
-              console.error("Registration failed:", err);
+            } catch (err: unknown) {
+              const errorMessage =
+                err instanceof Error ? err.message : "Registration failed";
+              toast.error(errorMessage);
             } finally {
               setIsSubmitting(false);
             }
@@ -156,14 +159,8 @@ export default function RegisterModal({
               </div>
             </div>
 
-            {error && (
-              <p style={{ color: "red", marginTop: "10px", fontSize: "14px" }}>
-                {error}
-              </p>
-            )}
-
             <button className={css.btn} type="submit" disabled={isSubmitting}>
-              {isSubmitting ? "Registering..." : "Register"}
+              Register
             </button>
           </Form>
         </Formik>

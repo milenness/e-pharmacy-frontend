@@ -4,6 +4,7 @@ import "./globals.css";
 import { Toaster } from "react-hot-toast";
 
 import QueryProvider from "@/components/QueryProvider";
+import GlobalLoader from "@/components/Loader/GlobalLoader"; // Імпортуємо наш лоадер
 
 const inter = Inter({
   subsets: ["latin", "cyrillic"],
@@ -46,7 +47,10 @@ export default function RootLayout({
   return (
     <html lang="en" data-scroll-behavior="smooth">
       <body className={inter.variable}>
-        <QueryProvider>{children}</QueryProvider>
+        <QueryProvider>
+          {children}
+          <GlobalLoader /> {/* Глобальний лоадер тепер тут */}
+        </QueryProvider>
         <Toaster
           position="top-right"
           toastOptions={{

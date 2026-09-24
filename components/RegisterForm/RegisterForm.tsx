@@ -6,12 +6,13 @@ import css from "./RegisterForm.module.css";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useAuthStore } from "@/store/authStore";
+import toast from "react-hot-toast";
 
 export default function RegisterForm() {
   const fieldId = useId();
   const router = useRouter();
 
-  const { register, error, clearError } = useAuthStore();
+  const { register, clearError } = useAuthStore();
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   return (
@@ -34,8 +35,10 @@ export default function RegisterForm() {
               password: values.password,
             });
             router.push("/");
-          } catch (err) {
-            console.error("Помилка реєстрації:", err);
+          } catch (err: unknown) {
+            const errorMessage =
+              err instanceof Error ? err.message : "Registration failed";
+            toast.error(errorMessage);
           } finally {
             setIsSubmitting(false);
           }
@@ -99,14 +102,8 @@ export default function RegisterForm() {
             </div>
           </div>
 
-          {error && (
-            <p style={{ color: "red", marginTop: "10px", fontSize: "14px" }}>
-              {error}
-            </p>
-          )}
-
           <button className={css.btn} type="submit" disabled={isSubmitting}>
-            {isSubmitting ? "Registering..." : "Register"}
+            Register
           </button>
         </Form>
       </Formik>

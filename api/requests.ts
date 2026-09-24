@@ -1,7 +1,7 @@
 import { instance, setAuthHeader, clearAuthHeader } from "./axiosInstance";
 import { AuthCredentials, CheckoutData } from "../types/api";
 
-// --- АВТОРИЗАЦІЯ ---
+// --- AUTHENTICATION ---
 export const registerUser = async (credentials: AuthCredentials) => {
   const { data } = await instance.post("/user/register", credentials);
   return data;
@@ -9,7 +9,9 @@ export const registerUser = async (credentials: AuthCredentials) => {
 
 export const loginUser = async (credentials: AuthCredentials) => {
   const { data } = await instance.post("/user/login", credentials);
-  setAuthHeader(data.token);
+  if (data?.token) {
+    setAuthHeader(data.token);
+  }
   return data;
 };
 
@@ -23,7 +25,7 @@ export const fetchUserInfo = async () => {
   return data;
 };
 
-// --- ТОВАРИ ТА АПТЕКИ ---
+// --- PRODUCTS & STORES ---
 export const getProducts = async (params?: Record<string, string | number>) => {
   const { data } = await instance.get("/products", { params });
   return data;
@@ -44,7 +46,7 @@ export const getReviews = async () => {
   return data;
 };
 
-// --- КОШИК ---
+// --- CART & CHECKOUT ---
 export const getCart = async () => {
   const { data } = await instance.get("/cart");
   return data;

@@ -6,12 +6,14 @@ import css from "./LoginForm.module.css";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useAuthStore } from "@/store/authStore";
+import toast from "react-hot-toast";
+import axios from "axios";
 
 export default function LoginForm() {
   const fieldId = useId();
   const router = useRouter();
 
-  const { login, error, clearError } = useAuthStore();
+  const { login, clearError } = useAuthStore();
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   return (
@@ -27,8 +29,14 @@ export default function LoginForm() {
           try {
             await login(values);
             router.push("/");
-          } catch (err) {
-            console.error("Помилка логіну:", err);
+          } catch (err: unknown) {
+            let errorMessage = "Invalid email or password";
+
+            if (axios.isAxiosError(err)) {
+              errorMessage = err.response?.data?.message || errorMessage;
+            }
+
+            toast.error(errorMessage);
           } finally {
             setIsSubmitting(false);
           }
@@ -65,14 +73,8 @@ export default function LoginForm() {
             </div>
           </div>
 
-          {error && (
-            <p style={{ color: "red", marginTop: "10px", fontSize: "14px" }}>
-              {error}
-            </p>
-          )}
-
           <button className={css.btn} type="submit" disabled={isSubmitting}>
-            {isSubmitting ? "Logging in..." : "Log in"}
+            Log in
           </button>
         </Form>
       </Formik>

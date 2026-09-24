@@ -6,6 +6,7 @@ import { IoClose } from "react-icons/io5";
 import css from "./LoginModal.module.css";
 import { Formik, Form, Field } from "formik";
 import { useAuthStore } from "@/store/authStore";
+import toast from "react-hot-toast";
 
 interface LoginModalProps {
   onClose: () => void;
@@ -40,7 +41,7 @@ export default function LoginModal({
 
   const fieldId = useId();
 
-  const { login, error, clearError } = useAuthStore();
+  const { login, clearError } = useAuthStore();
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const [mounted, setMounted] = useState(false);
@@ -84,8 +85,12 @@ export default function LoginModal({
             try {
               await login(values);
               onClose();
-            } catch (err) {
-              console.error("Login failed:", err);
+            } catch (err: unknown) {
+              const errorMessage =
+                err instanceof Error
+                  ? err.message
+                  : "Invalid email or password";
+              toast.error(errorMessage);
             } finally {
               setIsSubmitting(false);
             }
@@ -122,14 +127,8 @@ export default function LoginModal({
               </div>
             </div>
 
-            {error && (
-              <p style={{ color: "red", marginTop: "10px", fontSize: "14px" }}>
-                {error}
-              </p>
-            )}
-
             <button className={css.btn} type="submit" disabled={isSubmitting}>
-              {isSubmitting ? "Logging in..." : "Log in"}
+              Log in
             </button>
           </Form>
         </Formik>

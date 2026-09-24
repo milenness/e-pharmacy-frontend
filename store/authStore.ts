@@ -1,6 +1,5 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
-import axios from "axios";
 import { loginUser, registerUser, logoutUser } from "../api/requests";
 import { AuthCredentials } from "../types/api";
 
@@ -25,6 +24,7 @@ export const useAuthStore = create<AuthState>()(
 
       login: async (credentials) => {
         try {
+          set({ error: null });
           const data = await loginUser(credentials);
           set({
             user: { name: data.user.name, email: data.user.email },
@@ -33,17 +33,16 @@ export const useAuthStore = create<AuthState>()(
             error: null,
           });
         } catch (error: unknown) {
-          if (axios.isAxiosError(error)) {
-            set({ error: error.response?.data?.message || "Login failed" });
-          } else {
-            set({ error: "An unexpected error occurred" });
-          }
+          const errorMessage =
+            error instanceof Error ? error.message : "Login failed";
+          set({ error: errorMessage });
           throw error;
         }
       },
 
       register: async (credentials) => {
         try {
+          set({ error: null });
           await registerUser(credentials);
           const loginData = await loginUser({
             email: credentials.email,
@@ -56,13 +55,9 @@ export const useAuthStore = create<AuthState>()(
             error: null,
           });
         } catch (error: unknown) {
-          if (axios.isAxiosError(error)) {
-            set({
-              error: error.response?.data?.message || "Registration failed",
-            });
-          } else {
-            set({ error: "An unexpected error occurred" });
-          }
+          const errorMessage =
+            error instanceof Error ? error.message : "Registration failed";
+          set({ error: errorMessage });
           throw error;
         }
       },
