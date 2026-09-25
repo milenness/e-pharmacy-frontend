@@ -10,6 +10,7 @@ import { PiShoppingCartSimpleBold } from "react-icons/pi";
 import css from "./Header.module.css";
 import MobileMenu from "@/components/MobileMenu";
 import { useAuthStore } from "@/store/authStore";
+import { useCartStore } from "@/store/cartStore";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -17,6 +18,7 @@ export default function Header() {
   const router = useRouter();
 
   const { isLoggedIn, user, logout } = useAuthStore();
+  const { totalItems, fetchCart } = useCartStore(); // <--- Підключаємо стор кошика
 
   const isHomePage = pathname === "/";
 
@@ -33,6 +35,12 @@ export default function Header() {
     // eslint-disable-next-line react-hooks/set-state-in-effect
     setMounted(true);
   }, []);
+
+  useEffect(() => {
+    if (mounted && isLoggedIn) {
+      fetchCart();
+    }
+  }, [mounted, isLoggedIn, fetchCart]);
 
   return (
     <header className={`${css.header} ${isHomePage ? css.homeHeader : ""}`}>
@@ -126,7 +134,8 @@ export default function Header() {
                 >
                   <PiShoppingCartSimpleBold size={16} />
                 </Link>
-                <p className={css.count}>0</p>
+                {/* Виводимо реальну кількість товарів */}
+                <p className={css.count}>{totalItems}</p>
               </li>
 
               <li

@@ -208,3 +208,13 @@ transition: background-color var(--main-transition);
 .storeLink:hover, .storeLink:focus, .storeLink:active {
   background-color: var(--dark-green);
 }
+
+.item:nth-child(9) {
+  display: none;
+}
+
+@media only screen and (min-width: 1280px) {
+  .item:nth-child(9) {
+    display: block;
+  }
+}

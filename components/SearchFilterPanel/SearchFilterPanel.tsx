@@ -1,15 +1,18 @@
 "use client";
 
 import { useId } from "react";
-import { Formik, Form, Field } from "formik";
+import { Formik, Form, Field, FieldProps } from "formik";
 import css from "./SearchFilterPanel.module.css";
 import { IoIosArrowDown } from "react-icons/io";
 import { LuSearch } from "react-icons/lu";
 import { LuFilter } from "react-icons/lu";
+import { useProductsStore } from "@/store/productsStore";
 
 export default function SearchFilterPanel() {
   const categoryFieldId = useId();
   const nameFieldId = useId();
+
+  const { setFilters, fetchProducts } = useProductsStore();
 
   return (
     <Formik
@@ -17,8 +20,9 @@ export default function SearchFilterPanel() {
         category: "",
         name: "",
       }}
-      onSubmit={(values) => {
-        console.log("Filter submitted:", values);
+      onSubmit={async (values) => {
+        setFilters(values.category, values.name);
+        await fetchProducts();
       }}
     >
       <Form className={css.form}>
@@ -27,16 +31,7 @@ export default function SearchFilterPanel() {
             Product category
           </label>
           <Field name="category">
-            {({
-              field,
-            }: {
-              field: {
-                value: string;
-                name: string;
-                onChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
-                onBlur: (e: React.FocusEvent<HTMLSelectElement>) => void;
-              };
-            }) => (
+            {({ field }: FieldProps) => (
               <select
                 {...field}
                 id={categoryFieldId}
@@ -46,9 +41,13 @@ export default function SearchFilterPanel() {
                   Product category
                 </option>
                 <option value="all">All categories</option>
-                <option value="vitamins">Vitamins</option>
-                <option value="supplements">Supplements</option>
-                <option value="medicines">Medicines</option>
+                <option value="Medicine">Medicine</option>
+                <option value="Heart">Heart</option>
+                <option value="Head">Head</option>
+                <option value="Hand">Hand</option>
+                <option value="Leg">Leg</option>
+                <option value="Dental Care">Dental Care</option>
+                <option value="Skin Care">Skin Care</option>
               </select>
             )}
           </Field>

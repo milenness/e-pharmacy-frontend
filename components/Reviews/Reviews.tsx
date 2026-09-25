@@ -5,13 +5,7 @@ import css from "./Reviews.module.css";
 import { useReviewsLimit } from "@/hooks/useReviewsLimit";
 import { getReviews } from "@/api/requests";
 import Image from "next/image";
-
-interface Review {
-  _id?: string;
-  name?: string;
-  testimonial?: string;
-  avatar?: string;
-}
+import { Review } from "@/types/api";
 
 export default function Reviews() {
   const limit = useReviewsLimit();
