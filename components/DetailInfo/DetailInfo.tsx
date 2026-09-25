@@ -14,7 +14,6 @@ export default function DetailInfo() {
     "description",
   );
 
-  // Стан для керування модалками: "login", "register" або null (коли обидві закриті)
   const [modalType, setModalType] = useState<"login" | "register" | null>(null);
 
   const closeModal = () => setModalType(null);

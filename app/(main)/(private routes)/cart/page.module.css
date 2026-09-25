@@ -50,7 +50,6 @@ margin-bottom: 40px;
 @media only screen and (min-width: 1440px) {
 .cartContainer {
   flex-direction: row;
-  justify-content: space-between;
  gap: 96px;
 }
 }
@@ -70,5 +69,6 @@ padding: 40px 78px;
 @media only screen and (min-width: 1440px) {
 .cartWrapper {
 padding: 40px;
+max-width: 628px;
 }
 }

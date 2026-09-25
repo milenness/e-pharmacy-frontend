@@ -1,0 +1,185 @@
+
+.cartList {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  flex-grow: 1;
+}
+
+.cartItem {
+  position: relative;
+  display: flex;
+  gap: 12px;
+}
+
+.cartItem::after {
+  position: absolute;
+  content: "";
+  height: 1px;
+  width: 100%;
+background-color: rgba(29, 30, 33, 0.10);
+bottom: -20px;
+}
+
+.cartItem:last-child::after {
+  display: none;
+}
+
+@media only screen and (min-width: 768px) {
+.cartItem {
+  gap: 20px;
+}
+}
+
+.infoWrapper {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.img {
+  background: lightgray none no-repeat -9.25px -6.141px / 118.364% 108.575%;
+object-fit: cover;
+  object-position: center;
+  border-radius: 27px;
+border: 1.155px solid #F1F1F1;
+}
+
+@media only screen and (min-width: 768px) {
+.img {
+  width: 122px;
+  height: 133px;
+}
+}
+
+.mainInfo {
+margin-bottom: 12px;
+display: flex;
+flex-direction: column;
+gap: 8px;
+}
+
+@media only screen and (min-width: 768px) {
+  .mainCostInfo {
+display: flex;
+justify-content: space-between;
+} 
+
+.mainInfo {
+  margin-bottom: 0px;
+}
+}
+
+.medName {
+  font-size: 16px;
+line-height: 1.4; 
+white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+ max-width: 203px;
+}
+
+.medDesk {
+  color: #6A6A6F;
+font-size: 12px;
+line-height: 14px; 
+ max-width: 203px;
+ white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.cost {
+font-size: 12px;
+font-weight: 500;
+line-height: 14px; 
+flex-shrink: 0;
+}
+
+@media only screen and (min-width: 768px) {
+.medName {
+  font-size: 18px;
+  max-width: none;
+    white-space: normal;
+    overflow: visible;
+    text-overflow: clip;
+}
+
+.medDesk {
+font-size: 14px;
+line-height: 18px; 
+max-width: 218px; 
+    white-space: normal; 
+    overflow: visible; 
+    text-overflow: clip;
+}
+
+.cost {
+font-size: 14px;
+line-height: 18px; 
+}
+}
+
+.btnWrapper {
+  display: flex;
+  margin-top: 18px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@media only screen and (min-width: 768px) {
+.btnWrapper {
+  margin-top: auto;
+}
+}
+
+/* додавання кнопки */
+
+.counter {
+  display: flex;
+ border: 1px solid rgba(29, 30, 33, 0.10);
+border-radius: 60px;
+padding: 5px 14px;
+justify-content: space-between;
+gap: 12px;
+}
+
+.plusBtn, .minusBtn {
+background-color: transparent;
+color: var(--primary-color);
+padding: 0;
+}
+
+.number {
+  font-size: 14px;
+line-height: 20px;
+}
+
+@media only screen and (min-width: 768px) {
+.counter {
+padding: 11px 18px;
+gap: 12px;
+}
+
+.minusIcon, 
+.plusIcon {
+ width: 20px;
+ height: 20px;
+}
+
+.number {
+  font-size: 16px;
+}
+}
+
+.btnRemove {
+  padding: 8px 12px;
+  border-radius: 40px;
+background-color: rgba(232, 80, 80, 0.10);
+color: #E85050;
+font-size: 14px;
+font-weight: 500;
+letter-spacing: -0.7px;
+width: 89px;
+height: max-content;
+}
