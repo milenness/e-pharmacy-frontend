@@ -1,6 +1,6 @@
 # 💊 E-Pharmacy Client
 
-## 🔗 [Live Demo](TBD) | 🎨 [Figma Design](https://www.figma.com/file/qrKzOBVqM6zOZNFkTOpEO0/E-PHARMACY-(clients)?type=design&node-id=0-1&mode=design&t=O9kTuPJAS2bjEuwM-0)
+## 🔗 [Live Demo](https://e-pharmacy-frontend-fd01uicid-milenness-projects.vercel.app/) | 🎨 [Figma Design](https://www.figma.com/file/qrKzOBVqM6zOZNFkTOpEO0/E-PHARMACY-(clients)?type=design&node-id=0-1&mode=design&t=O9kTuPJAS2bjEuwM-0)
 
 **E-Pharmacy** is a modern, responsive web application designed for ordering medications online, exploring local medicine stores, managing a shopping cart, and tracking health-related product details seamlessly.
 
