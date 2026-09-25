@@ -4,12 +4,14 @@ import { useEffect, useState } from "react";
 import css from "./ProductCatalog.module.css";
 import Link from "next/link";
 import Image from "next/image";
-import { updateCartItem } from "@/api/requests";
 import { Product } from "@/types/api";
 import toast from "react-hot-toast";
 import { useCartStore } from "@/store/cartStore";
 import { useProductsStore } from "@/store/productsStore";
 import { useLoaderStore } from "@/store/loaderStore";
+import { useAuthStore } from "@/store/authStore";
+import LoginModal from "@/components/LoginModal";
+import RegisterModal from "@/components/RegisterModal"; // Додано імпорт
 
 const ProductItem = ({
   product,
@@ -56,9 +58,14 @@ const ProductItem = ({
 
 export default function ProductCatalog() {
   const { products, fetchProducts } = useProductsStore();
-  const { incrementCart } = useCartStore();
-
+  const { items, updateQuantity } = useCartStore();
   const isLoading = useLoaderStore((state) => state.isLoading);
+
+  const { isLoggedIn } = useAuthStore();
+
+  // Стани для керування обома модалками
+  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
+  const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
 
   useEffect(() => {
     fetchProducts().catch(() => {
@@ -67,9 +74,16 @@ export default function ProductCatalog() {
   }, [fetchProducts]);
 
   const handleAddToCart = async (productId: string) => {
+    if (!isLoggedIn) {
+      setIsLoginModalOpen(true);
+      return;
+    }
+
     try {
-      await updateCartItem(productId, 1);
-      incrementCart();
+      const existingItem = items.find((item) => item.product._id === productId);
+      const newQuantity = existingItem ? existingItem.quantity + 1 : 1;
+
+      await updateQuantity(productId, newQuantity);
       toast.success("Product successfully added to cart!");
     } catch {
       toast.error("Failed to add product to cart");
@@ -85,14 +99,36 @@ export default function ProductCatalog() {
   }
 
   return (
-    <ul className={css.list}>
-      {products.map((product) => (
-        <ProductItem
-          key={product._id}
-          product={product}
-          onAddToCart={handleAddToCart}
+    <>
+      <ul className={css.list}>
+        {products.map((product) => (
+          <ProductItem
+            key={product._id}
+            product={product}
+            onAddToCart={handleAddToCart}
+          />
+        ))}
+      </ul>
+
+      {isLoginModalOpen && (
+        <LoginModal
+          onClose={() => setIsLoginModalOpen(false)}
+          onSwitchToRegister={() => {
+            setIsLoginModalOpen(false);
+            setIsRegisterModalOpen(true); // Тепер відкривається модалка, а не сторінка
+          }}
         />
-      ))}
-    </ul>
+      )}
+
+      {isRegisterModalOpen && (
+        <RegisterModal
+          onClose={() => setIsRegisterModalOpen(false)}
+          onSwitchToLogin={() => {
+            setIsRegisterModalOpen(false);
+            setIsLoginModalOpen(true);
+          }}
+        />
+      )}
+    </>
   );
 }

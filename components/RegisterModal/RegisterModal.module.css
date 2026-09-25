@@ -96,6 +96,8 @@ margin-bottom: 14px;
 border-radius: 60px;
 background-color: var(--white);
  width: 100%;
+ font-size: 12px;
+line-height: 1.5;
 }
 
 .field::placeholder {

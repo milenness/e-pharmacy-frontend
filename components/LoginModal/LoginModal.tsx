@@ -136,7 +136,7 @@ export default function LoginModal({
         <button
           type="button"
           onClick={onSwitchToRegister}
-          className={css.redisterBtn}
+          className={css.registerBtn}
           aria-label="Switch to register form"
         >
           Don&apos;t have an account?

@@ -19,7 +19,7 @@ export default function PaymentMethod() {
           <Field
             type="radio"
             name="paymentMethod"
-            value="cash"
+            value="Cash On Delivery"
             id={`${fieldId}-cash`}
             className={css.hiddenRadio}
           />
@@ -31,7 +31,7 @@ export default function PaymentMethod() {
           <Field
             type="radio"
             name="paymentMethod"
-            value="bank"
+            value="Bank"
             id={`${fieldId}-bank`}
             className={css.hiddenRadio}
           />

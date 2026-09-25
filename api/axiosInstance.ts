@@ -7,7 +7,6 @@ export const instance = axios.create({
   baseURL,
 });
 
-// Request interceptor: show loader and attach token from Zustand persist storage if available
 instance.interceptors.request.use(
   (config) => {
     useLoaderStore.getState().showLoader();
@@ -32,7 +31,6 @@ instance.interceptors.request.use(
   },
 );
 
-// Response interceptor: hide loader and handle errors globally
 instance.interceptors.response.use(
   (response) => {
     useLoaderStore.getState().hideLoader();

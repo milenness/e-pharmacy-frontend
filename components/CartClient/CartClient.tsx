@@ -9,16 +9,22 @@ import OrderDetails from "@/components/OrderDetails";
 import CartList from "@/components/CartList";
 import { Formik, Form } from "formik";
 import { useAuthStore } from "@/store/authStore";
+import { useCartStore } from "@/store/cartStore";
+import toast from "react-hot-toast";
 
 export default function CartClient() {
-  const { isLoggedIn } = useAuthStore();
+  const { isLoggedIn, user } = useAuthStore();
+  const { fetchCart, checkout } = useCartStore();
   const router = useRouter();
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     // eslint-disable-next-line react-hooks/set-state-in-effect
     setMounted(true);
-  }, []);
+    if (isLoggedIn) {
+      fetchCart();
+    }
+  }, [isLoggedIn, fetchCart]);
 
   useEffect(() => {
     if (mounted && !isLoggedIn) {
@@ -33,15 +39,28 @@ export default function CartClient() {
   return (
     <div className={css.cartContainer}>
       <Formik
+        enableReinitialize
         initialValues={{
-          username: "",
-          email: "",
+          username: user?.name || "",
+          email: user?.email || "",
           phone: "",
           address: "",
-          paymentMethod: "cash",
+          paymentMethod: "Cash On Delivery" as "Cash On Delivery" | "Bank",
         }}
-        onSubmit={(values) => {
-          console.log("Final Order Data:", values);
+        onSubmit={async (values, { resetForm }) => {
+          try {
+            await checkout({
+              name: values.username,
+              email: values.email,
+              phone: values.phone,
+              address: values.address,
+              paymentMethod: values.paymentMethod,
+            });
+            toast.success("Order placed successfully!");
+            resetForm();
+          } catch {
+            toast.error("Failed to place order.");
+          }
         }}
       >
         <Form className={css.cartWrapper}>

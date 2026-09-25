@@ -18,7 +18,12 @@ export default function Header() {
   const router = useRouter();
 
   const { isLoggedIn, user, logout } = useAuthStore();
-  const { totalItems, fetchCart } = useCartStore(); // <--- Підключаємо стор кошика
+
+  // Витягуємо items замість totalItems
+  const { items, fetchCart } = useCartStore();
+
+  // Рахуємо кількість товарів у кошику
+  const totalItems = items.length;
 
   const isHomePage = pathname === "/";
 
@@ -134,7 +139,7 @@ export default function Header() {
                 >
                   <PiShoppingCartSimpleBold size={16} />
                 </Link>
-                {/* Виводимо реальну кількість товарів */}
+                {/* Відображаємо пораховану кількість товарів */}
                 <p className={css.count}>{totalItems}</p>
               </li>
 
