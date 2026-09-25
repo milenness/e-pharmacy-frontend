@@ -1,7 +1,7 @@
 import { instance, setAuthHeader, clearAuthHeader } from "./axiosInstance";
 import { AuthCredentials, CheckoutData } from "../types/api";
 
-// --- AUTHENTICATION ---
+// --- АВТОРИЗАЦІЯ ---
 export const registerUser = async (credentials: AuthCredentials) => {
   const { data } = await instance.post("/user/register", credentials);
   return data;
@@ -9,9 +9,7 @@ export const registerUser = async (credentials: AuthCredentials) => {
 
 export const loginUser = async (credentials: AuthCredentials) => {
   const { data } = await instance.post("/user/login", credentials);
-  if (data?.token) {
-    setAuthHeader(data.token);
-  }
+  setAuthHeader(data.token);
   return data;
 };
 
@@ -25,9 +23,15 @@ export const fetchUserInfo = async () => {
   return data;
 };
 
-// --- PRODUCTS & STORES ---
+// --- ТОВАРИ ТА АПТЕКИ ---
 export const getProducts = async (params?: Record<string, string | number>) => {
   const { data } = await instance.get("/products", { params });
+  return data;
+};
+
+// ДОДАНО: Функція для отримання одного товару за ID
+export const getProductById = async (id: string) => {
+  const { data } = await instance.get(`/products/${id}`);
   return data;
 };
 
@@ -46,7 +50,7 @@ export const getReviews = async () => {
   return data;
 };
 
-// --- CART & CHECKOUT ---
+// --- КОШИК ---
 export const getCart = async () => {
   const { data } = await instance.get("/cart");
   return data;

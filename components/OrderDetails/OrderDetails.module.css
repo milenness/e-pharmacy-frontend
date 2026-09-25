@@ -56,3 +56,8 @@ transition: background-color var(--main-transition), border-color var(--main-tra
     background-color: var(--dark-green);
       border-color: var(--dark-green);
 }
+
+.submitBtn:disabled {
+  cursor: not-allowed; 
+  opacity: 0.6;
+}
